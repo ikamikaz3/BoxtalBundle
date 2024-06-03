@@ -14,8 +14,5 @@
         "psr-4": {
             "Motherbrain\\BoxtalBundle\\": "src/"
         }
-    },
-    "require": {
-        "boxtale/php-library": "dev-master"
     }
 }
