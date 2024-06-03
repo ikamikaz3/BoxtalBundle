@@ -1,0 +1,21 @@
+{
+    "name": "motherbrain/boxtal-bundle",
+    "description": "Boxtal PHP Library for Symfony projects",
+    "authors": [
+        {
+            "name": "Thomas Billot",
+            "email": "thomas.billot@awstudio.fr"
+        }
+    ],
+    "type": "library",
+    "license": "Unlicense",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Motherbrain\\BoxtalBundle\\": "src/"
+        }
+    },
+    "require": {
+        "boxtale/php-library": "dev-master"
+    }
+}
