@@ -7,7 +7,7 @@
             "email": "thomas.billot@awstudio.fr"
         }
     ],
-    "type": "library",
+    "type": "symfony-bundle",
     "license": "Unlicense",
     "minimum-stability": "dev",
     "autoload": {
