@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace Motherbrain\BoxtalBundle\Client;
 
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializerInterface;
+use Motherbrain\BoxtalBundle\Model\CarrierList;
+use Motherbrain\BoxtalBundle\Model\Operator;
+use Motherbrain\BoxtalBundle\Model\Operators;
+use Motherbrain\BoxtalBundle\Model\Service;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -11,24 +17,25 @@ final class Client
 {
     private HttpClientInterface $httpClient;
 
-    private ?string $username;
+    private SerializerInterface $serializer;
 
-    private ?string $password;
-
-    public function __construct(string $username, string $password)
+    public function __construct(string $username, string $password, SerializerInterface $serializer)
     {
-        $this->username = $username;
-        $this->password = $password;
-
         $this->httpClient = HttpClient::create([
-            'base_uri' => 'https://test.envoimoinscher.com/'
+            'auth_basic' => [$username, $password],
+            'base_uri' => ClientInterface::TEST_URI,
+            'query' => [
+                'channel' => ClientInterface::PLATFORM,
+                'version' => ClientInterface::PLATFORM_VERSION
+            ]
         ]);
+        $this->serializer = $serializer;
     }
 
-    public function getCarriersList(): array
+    public function getCarriersList(): Operators
     {
-         $request = $this->httpClient->request('GET', '/api/v1/carriers_list');
+        $response = $this->httpClient->request('GET', '/api/v1/carriers_list');
 
-         dump($request->getContent());
+        return $this->serializer->deserialize($response->getContent(), Operators::class, 'xml');
     }
 }

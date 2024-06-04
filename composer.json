@@ -14,5 +14,10 @@
         "psr-4": {
             "Motherbrain\\BoxtalBundle\\": "src/"
         }
+    },
+    "require": {
+        "php": "7.4",
+        "symfony/http-client": "5.4.*",
+        "jms-serializer/serializer-bundle": "^3.0"
     }
 }
