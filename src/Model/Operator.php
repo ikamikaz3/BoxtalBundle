@@ -24,9 +24,9 @@ class Operator
      */
     private array $services = [];
 
-    public function setName(?string $name): void
+    public function getCode(): ?string
     {
-        $this->name = $name;
+        return $this->code;
     }
 
     public function getName(): ?string
@@ -37,15 +37,5 @@ class Operator
     public function getServices(): array
     {
         return $this->services;
-    }
-
-    public function setServices(array $services): void
-    {
-        $this->services = $services;
-    }
-
-    public function addService(Service $service): void
-    {
-        $this->services[] = $service;
     }
 }

@@ -19,6 +19,12 @@ class Service
 
     /**
      * @JMS\Type("string")
+     * @JMS\SerializedName("label")
+     */
+    private ?string $name = null;
+
+    /**
+     * @JMS\Type("string")
      */
     private ?string $zone = null;
 
@@ -75,4 +81,64 @@ class Service
      * @JMS\XmlList(entry="translation")
      */
     private array $translations = [];
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function getZone(): ?string
+    {
+        return $this->zone;
+    }
+
+    public function getZoneFr(): ?string
+    {
+        return $this->zoneFr;
+    }
+
+    public function getZoneEs(): ?string
+    {
+        return $this->zoneEs;
+    }
+
+    public function getZoneEu(): ?string
+    {
+        return $this->zoneEu;
+    }
+
+    public function getZoneInt(): ?string
+    {
+        return $this->zoneInt;
+    }
+
+    public function getZoneRestriction(): ?string
+    {
+        return $this->zoneRestriction;
+    }
+
+    public function getDeliveryDueTime(): ?string
+    {
+        return $this->deliveryDueTime;
+    }
+
+    public function getPickupPlace(): ?string
+    {
+        return $this->pickupPlace;
+    }
+
+    public function getDropoffPlace(): ?string
+    {
+        return $this->dropoffPlace;
+    }
+
+    public function getTranslations(): array
+    {
+        return $this->translations;
+    }
 }
