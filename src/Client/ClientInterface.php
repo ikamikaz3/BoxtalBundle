@@ -6,8 +6,10 @@ namespace Motherbrain\BoxtalBundle\Client;
 
 interface ClientInterface
 {
-    public const LIVE_URI = 'https://www.envoimoinscher.com/';
+    public const MODE_LIVE = 'live';
+    public const MODE_TEST = 'test';
 
+    public const LIVE_URI = 'https://www.envoimoinscher.com/';
     public const TEST_URI = 'https://test.envoimoinscher.com/';
 
     /**

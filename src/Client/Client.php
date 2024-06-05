@@ -19,11 +19,11 @@ final class Client
 
     private SerializerInterface $serializer;
 
-    public function __construct(string $username, string $password, SerializerInterface $serializer)
+    public function __construct(string $mode, string $username, string $password, SerializerInterface $serializer)
     {
         $this->httpClient = HttpClient::create([
             'auth_basic' => [$username, $password],
-            'base_uri' => ClientInterface::TEST_URI,
+            'base_uri' => $mode === ClientInterface::MODE_LIVE ? ClientInterface::LIVE_URI : ClientInterface::TEST_URI,
             'query' => [
                 'channel' => ClientInterface::PLATFORM,
                 'version' => ClientInterface::PLATFORM_VERSION

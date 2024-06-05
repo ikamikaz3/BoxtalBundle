@@ -3,6 +3,7 @@ services:
   motherbrain_boxtal.client:
     class: Motherbrain\BoxtalBundle\Client\Client
     arguments:
+      - '%motherbrain_boxtal.mode%'
       - '%motherbrain_boxtal.client_username%'
       - '%motherbrain_boxtal.client_password%'
       - '@jms_serializer'
